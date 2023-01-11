@@ -60,7 +60,7 @@ class CompanyController extends Controller
 
         Company::create($data);
 
-        return redirect()->back()->with('message', 'Company has been added successfully');;
+        return redirect()->back()->with('message', 'Company has been added successfully');
 
 
     }
@@ -84,7 +84,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -96,7 +96,40 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Company::find($id);
+
+        $request->validate([
+            'name' => 'required|unique:companies,name,' . $company->$id . '|max:300',
+        ]);
+
+        if($request->hasFile('company_logo')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            
+            $request->file('company_logo')->store('companyLogo', 'public');
+            
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'logo' => $request->file('company_logo')->hashName(),
+                'website' => $request->website,
+            ];    
+            
+        }else{
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,                
+                'website' => $request->website,
+            ];   
+            
+        }
+
+        $company->update($data);
+
+        return redirect()->back()->with('message', 'Company has been updated successfully');
+
     }
 
     /**

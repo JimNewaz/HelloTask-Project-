@@ -6,7 +6,18 @@ Company Details
 
 
 <!-- @section('mainpage') -->
+<style>
+    .modal-backdrop {
+        display: none;
+        z-index: 999999999999 !important;
+    }
 
+    .modal-content {
+        margin: 2px auto;
+        z-index: 9999999999999 !important;
+    }
+
+</style>
 
 <div class="main-content">
     <section class="section">
@@ -47,7 +58,7 @@ Company Details
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($company  as $comp => $com)
+                                    @foreach ($company as $comp => $com)
                                     <tr class="text-left">
                                         <td>
                                             {{ ++$comp }}
@@ -61,20 +72,116 @@ Company Details
                                             {{ $com -> email }}
                                         </td>
                                         <td>
-                                            <img src="{{ asset('storage/companyLogo/'.$com -> logo) }}" alt=""
-                                            title="" width="100" height="80">
+                                            <img src="{{ asset('storage/companyLogo/'.$com -> logo) }}" alt="" title=""
+                                                width="100" height="80">
                                         </td>
                                         <td>
                                             {{ $com -> website }}
                                         </td>
                                         <td>
-                                        <a href="#" data-toggle="modal"
-                                            data-target=""
-                                            class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="#" data-toggle="modal"
+                                                data-target="{{ '#Edit'. $com->id .'CompanyModal' }}"
+                                                class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                @endforeach
+
+
+                                    <!-- Company Update Modal -->
+                                    <div class="modal fade" id="{{ 'Edit' . $com->id . 'CompanyModal'  }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit -
+                                                        {{ $com->name }}
+                                                    </h5>
+
+
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form action="{{ route('company.update', $com->id) }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        @method('PUT')
+                                                        <div class="card-body">
+                                                            <div class="form-group row">
+                                                                <label for="companyname"
+                                                                    class="col-sm-3 col-form-label">Name</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text"
+                                                                        class="form-control @error('name') is-invalid @enderror"
+                                                                        id="companyname" name="name"
+                                                                        value="{{ $com->name }}">
+                                                                    @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label for="companyemail"
+                                                                    class="col-sm-3 col-form-label">Email</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="email" class="form-control"
+                                                                        id="companyemail" name="email"
+                                                                        value="{{ $com->email }}">
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group ">
+                                                                <label>Company Logo</label>
+                                                                <img src="{{ asset('storage/companyLogo/'.$com -> logo) }}"
+                                                                    alt="" title="" width="100" height="80">
+
+                                                                <div class="custom-file">
+                                                                    <input type="file" name="company_logo"
+                                                                        class="custom-file-input" id="customFile"
+                                                                        onchange="readURL(this)" value="{{ $com -> logo }}">
+                                                                    <label class="custom-file-label"
+                                                                        for="customFile">Choose File</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label for="companywebsite"
+                                                                    class="col-sm-3 col-form-label">Website</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control"
+                                                                        id="companywebsite" name="website"
+                                                                        value="{{ $com->website }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-9">
+                                                                    <button type="submit" class="btn btn-primary">Update
+                                                                        Company</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+
+
+                                                </div>
+                                                <div class="modal-footer bg-whitesmoke br">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -91,7 +198,7 @@ Company Details
     </section>
 </div>
 
-<!-- Modal -->
+<!-- Company Add Modal -->
 <div class="modal fade" id="addcompany" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,11 +216,12 @@ Company Details
                         <div class="form-group row">
                             <label for="companyname" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="companyname" name="name" placeholder="Name" value="{{ old('name') }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    id="companyname" name="name" placeholder="Name" value="{{ old('name') }}">
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -149,7 +257,7 @@ Company Details
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-9">
-                            <button type="submit" class="btn btn-primary">Create Company</button>
+                                <button type="submit" class="btn btn-primary">Create Company</button>
                             </div>
                         </div>
                     </div>
