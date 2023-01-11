@@ -6,7 +6,14 @@
 									collapse-btn"> <i data-feather="align-justify"></i></a></li>
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                     <i data-feather="maximize"></i>
-                </a></li>
+                </a>
+            </li>
+
+            <li>
+                <p class="mt-1">
+                    Welcome - {{ Auth::guard('admin')->user()->name }}
+                </p>
+            </li>
             
         </ul>
     </div>
