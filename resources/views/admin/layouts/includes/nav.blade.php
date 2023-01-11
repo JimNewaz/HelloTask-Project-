@@ -10,9 +10,11 @@
             </li>
 
             <li>
-                <p class="mt-1">
-                    Welcome - {{ Auth::guard('admin')->user()->name }}
-                </p>
+                <strong>
+                    <p class="mt-1">
+                        Welcome - {{ Auth::guard('admin')->user()->name }}
+                    </p>
+                </strong>                
             </li>
             
         </ul>
