@@ -12,3 +12,5 @@
 <!-- Custom style CSS -->
 <link rel="stylesheet" href="{{ asset('assets') }}/css/custom.css">
 <link rel='shortcut icon' type='image/x-icon' href="{{ asset('assets') }}/img/favicon.ico" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />

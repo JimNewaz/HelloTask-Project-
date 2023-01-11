@@ -4,6 +4,9 @@
 Company Details
 @endsection
 
+@php
+    $page="Company"
+@endphp
 
 <!-- @section('mainpage') -->
 <style>
@@ -35,12 +38,12 @@ Company Details
                         </button>
                     </div>
 
-                    @if (session()->has('message'))
+                    <!-- @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session()->get('message')}}
                     </div>
 
-                    @endif
+                    @endif -->
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -79,10 +82,25 @@ Company Details
                                             {{ $com -> website }}
                                         </td>
                                         <td>
-                                            <a href="#" data-toggle="modal"
-                                                data-target="{{ '#Edit'. $com->id .'CompanyModal' }}"
-                                                class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <div class="">
+
+                                                <button data-toggle="modal" data-target="{{ '#Edit'. $com->id .'CompanyModal' }}"
+                                                    class="btn btn-primary  mb-2">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </button>
+
+                                                <form action="{{ route('company.destroy', $com->id) }}" method="POST">
+                                                    @csrf
+
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+
+                                                </form>
+                                            </div>
+
                                         </td>
                                     </tr>
 
@@ -146,7 +164,8 @@ Company Details
                                                                 <div class="custom-file">
                                                                     <input type="file" name="company_logo"
                                                                         class="custom-file-input" id="customFile"
-                                                                        onchange="readURL(this)" value="{{ $com -> logo }}">
+                                                                        onchange="readURL(this)"
+                                                                        value="{{ $com -> logo }}">
                                                                     <label class="custom-file-label"
                                                                         for="customFile">Choose File</label>
                                                                 </div>

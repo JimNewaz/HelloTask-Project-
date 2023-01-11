@@ -7,11 +7,11 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Company & Employee</li>
-            <li class="dropdown">
-                <a href="{{ route('company.index') }}" class="nav-link"><i
+            <li class="dropdown @if($page  == 'Company') active @endif">
+                <a href="{{ route('company.index') }}" class="nav-link "><i
                         data-feather="user"></i><span>Company</span></a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown @if($page  == 'Employee') active @endif">
                 <a href="" class="nav-link"><i data-feather="monitor"></i><span>Employee</span></a>
             </li>
 

@@ -60,7 +60,12 @@ class CompanyController extends Controller
 
         Company::create($data);
 
-        return redirect()->back()->with('message', 'Company has been added successfully');
+        $message = [
+            'message' => 'Company has been added successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($message);
 
 
     }
@@ -128,7 +133,12 @@ class CompanyController extends Controller
 
         $company->update($data);
 
-        return redirect()->back()->with('message', 'Company has been updated successfully');
+        $message = [
+            'message' => 'Company has been updated successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($message);
 
     }
 
@@ -140,6 +150,15 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+
+        $company->delete();
+
+        $message = [
+            'message' => 'Company has been removed successfully',
+            'alert-type' => 'danger',
+        ];
+
+        return redirect()->back()->with($message);
     }
 }
