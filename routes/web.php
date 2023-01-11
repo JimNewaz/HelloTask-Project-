@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,4 +44,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
     Route::resource('/admin/company', CompanyController::class);
+
+    Route::resource('/admin/employee', EmployeeController::class);
 });

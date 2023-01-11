@@ -9,10 +9,10 @@
             <li class="menu-header">Company & Employee</li>
             <li class="dropdown @if($page  == 'Company') active @endif">
                 <a href="{{ route('company.index') }}" class="nav-link "><i
-                        data-feather="user"></i><span>Company</span></a>
+                        data-feather="monitor"></i><span>Company</span></a>
             </li>
             <li class="dropdown @if($page  == 'Employee') active @endif">
-                <a href="" class="nav-link"><i data-feather="monitor"></i><span>Employee</span></a>
+                <a href="{{ route('employee.index') }}" class="nav-link"><i data-feather="user"></i><span>Employee</span></a>
             </li>
 
             
