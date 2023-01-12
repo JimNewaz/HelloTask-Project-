@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\UsersControler;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,11 @@ use App\Http\Controllers\Admin\EmployeeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user', [UsersControler::class, 'index']);
+
+Route::get('/company', [UsersControler::class, 'company'])->name('user.company');
+Route::get('/employee', [UsersControler::class, 'employee'])->name('user.employee');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
