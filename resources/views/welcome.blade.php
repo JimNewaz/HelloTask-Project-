@@ -466,7 +466,7 @@
                 @endauth
             </span>
 
-
+            
 
             <span class="">
                 @if (Route::has('login'))

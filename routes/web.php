@@ -24,14 +24,29 @@ Route::get('/', function () {
 
 Route::get('/user', [UsersControler::class, 'index']);
 
-Route::get('/company', [UsersControler::class, 'company'])->name('user.company');
-Route::get('/employee', [UsersControler::class, 'employee'])->name('user.employee');
+Route::get('company', [UsersControler::class, 'company'])->name('company');
+Route::get('employee', [UsersControler::class, 'employee'])->name('employee');
+
+// Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
 
 
 /*

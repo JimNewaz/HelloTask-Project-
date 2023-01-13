@@ -5,8 +5,7 @@
 
 <div class="container">
     <div class="text-center mt-5">
-        <h1>Welcome - {{ Auth::user()->name }}</h1>
-        <p class="lead">All Companies</p>
+       
     </div>
 </div>
 
@@ -64,5 +63,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

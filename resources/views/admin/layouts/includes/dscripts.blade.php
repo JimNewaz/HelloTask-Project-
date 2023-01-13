@@ -83,4 +83,19 @@
             }
         })
     });
+
+    $(document).ready(function() {
+        $('#table-1').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
+            "bDestroy": true,
+        } );
+    } );
+
+    
 </script>
