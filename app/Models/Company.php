@@ -15,4 +15,9 @@ class Company extends Model
         'logo',
         'website',
     ];
+
+    // public function employee()
+    // {
+    //     return $this->belongsTo(Employee::class, 'company_id');
+    // }
 }

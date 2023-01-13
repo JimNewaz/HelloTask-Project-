@@ -33,7 +33,7 @@
                             {{ $emp -> firstname }} {{ $emp -> lastname }}
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">{{ $emp -> company_id }}</p>
+                            <p class="fw-normal mb-1">{{ $emp ->companyname->name ?? 'None'}}</p>
 
                         </td>
                         <td>

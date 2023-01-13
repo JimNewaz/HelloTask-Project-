@@ -71,8 +71,8 @@ $page="Employee"
                                             {{ $emp -> lastname }}
                                         </td>
                                         <td>
-                                            {{ $emp -> company_id }}
-                                           
+                                            {{ $emp ->companyname->name ?? 'None'}}
+                                            
                                         </td>
                                         <td>
                                             {{ $emp -> email }}

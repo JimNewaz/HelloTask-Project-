@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         $employee = Employee::latest()->get();
         $company = Company::latest()->get();
             
