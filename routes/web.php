@@ -18,6 +18,14 @@ use App\Http\Controllers\UsersControler;
 |
 */
 
+
+
+/*
+|--------------------------------------------------------------------------
+|   Client Side Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,7 +35,10 @@ Route::get('/user', [UsersControler::class, 'index']);
 Route::get('company', [UsersControler::class, 'company'])->name('company');
 Route::get('employee', [UsersControler::class, 'employee'])->name('employee');
 
-// Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('profile',[UsersControler::class,'profile'])->name('profile');
+Route::post('profile/{user}',[UsersControler::class,'update'])->name('profile.update');
+
+
 
 Route::get('logout', function ()
 {
@@ -39,9 +50,13 @@ Route::get('logout', function ()
 
 
 
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 

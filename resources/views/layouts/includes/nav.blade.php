@@ -12,7 +12,7 @@
 
 
                 @auth
-                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
                 @else
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
