@@ -10,7 +10,7 @@
 
 
 <p align="center">
-  <a href="#key-features">Project Requirements</a> •
+  <a href="#Project-Requirements">Project Requirements</a> •
   <a href="#installation">How To Use</a> •
   <a href="#download">Download</a> •
   <a href="#user-guideline">User Guideline</a> •
@@ -21,26 +21,25 @@
 
 ## Project-Requirements
 
-** Basic Laravel Auth: ability to log in as an administrator 
-** Use database seeds to create the first user with email admin@admin.com and password “password” 
-** Use a theme like AdminLTE (whatever you prefer). 
-** Companies DB table consists of these fields: Name (required), email, logo, website. 
-** Use database migrations to create those schemas above. 
-** Store companies’ logos in storage/app/public folder and make them accessible from public. 
-** Use basic Laravel resource controllers with default methods – index, create, store etc. 
-** Use Laravel’s validation function, using Request classes. 
-** Employees DB table consists of these fields: First name (required), last name (required), Company (foreign key to Companies), 
-email, phone. 
-** CRUD functionality (Create / Read / Update / Delete) for two menu items: Companies and Employees.
-** Use Laravel make: auth as the default Bootstrap-based design theme.
-
-** Use the Datatables.net library to show tables – and make the rows editable and save via AJAX calls.
-** Use Laravel’s pagination for showing the Companies/Employees list, 10 entries per page.
-** Add an Export Button to download the data.
-** Use events to notify the user when changing email/password.
-
-** Email notification: send an email whenever a new user is registered (use Mailgun or Mailtrap), including an instant email and 
+1) Basic Laravel Auth: ability to log in as an administrator 
+2) Use database seeds to create the first user with email admin@admin.com and password “password” 
+3) Use a theme like AdminLTE (whatever you prefer). 
+4) Companies DB table consists of these fields: Name (required), email, logo, website. 
+5) Use database migrations to create those schemas above.    
+6) Store companies’ logos in storage/app/public folder and make them accessible from public.      
+7) Use basic Laravel resource controllers with default methods – index, create, store etc.       
+8) Use Laravel’s validation function, using Request classes.       
+9) Employees DB table consists of these fields: First name (required), last name (required), Company (foreign key to Companies), 
+email, phone.        
+10) CRUD functionality (Create / Read / Update / Delete) for two menu items: Companies and Employees.      
+11) Use Laravel make: auth as the default Bootstrap-based design theme.        
+12) Use the Datatables.net library to show tables – and make the rows editable and save via AJAX calls.       
+13) Use Laravel’s pagination for showing the Companies/Employees list, 10 entries per page.        
+14) Add an Export Button to download the data.
+15) Use events to notify the user when changing email/password.         
+16) Email notification: send an email whenever a new user is registered (use Mailgun or Mailtrap), including an instant email and 
 a follow-up email after 3 days of registration.
+
 
 ## Installation
 
@@ -87,10 +86,10 @@ User Login Credentials:
 ![image](https://user-images.githubusercontent.com/63665452/212410710-c1d71f10-b043-4491-869b-26f74c078306.png)
 
 
--> Company Table
+**Company Table
 ![image](https://user-images.githubusercontent.com/63665452/212411039-9db96e6b-7d0c-4a8e-b5f6-3987fa82df07.png)
 
--> Employee Table
+**Employee Table
 ![image](https://user-images.githubusercontent.com/63665452/212411109-c9392f5d-e6d7-4be2-bee8-c21174a522f1.png)
 
 
@@ -98,7 +97,7 @@ User Login Credentials:
 ![image](https://user-images.githubusercontent.com/63665452/212410858-8ec1b84b-978c-49dd-b8f8-b5a8ac0b2721.png)
 
 
-Company And Employee Details
+**Company And Employee Details
 
 ![image](https://user-images.githubusercontent.com/63665452/212411217-3f1e3265-28ee-4a56-afeb-d102e472ad38.png)
 ![image](https://user-images.githubusercontent.com/63665452/212411267-85fd6d68-ecdf-4e74-ae9a-37ca078d9303.png)
