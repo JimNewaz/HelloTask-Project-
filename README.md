@@ -49,6 +49,9 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and Co
 # Clone this repository
 $ git clone https://github.com/JimNewaz/HelloTask-Project-.git
 
+# Pull this repository
+$ git pull https://github.com/JimNewaz/HelloTask-Project-.git
+
 ```
 
 Open the composer and run 
